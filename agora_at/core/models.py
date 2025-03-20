@@ -32,7 +32,7 @@ class NegotiatedProtocol(BaseModel):
     id: str
     version: str
     description: str
-    schema: Any
+    schema_def: Any = Field(alias='schema')
     stats: Optional[Dict[str, float]] = None
 
 
@@ -63,8 +63,8 @@ class FeedGeneratorConfig(BaseModel):
 
 class BridgeMessage(BaseModel):
     """Message exchanged between Agora and AT Protocol systems."""
-    source: str = Field(..., regex="^(agora|atproto)$")
-    target: str = Field(..., regex="^(agora|atproto)$")
+    source: str = Field(..., pattern="^(agora|atproto)$")
+    target: str = Field(..., pattern="^(agora|atproto)$")
     content: Any
     protocol: Optional[NegotiatedProtocol] = None
     meta: Optional[Dict[str, Any]] = None

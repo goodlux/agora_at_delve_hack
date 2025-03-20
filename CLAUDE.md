@@ -43,3 +43,87 @@ This document contains filesystem locations for quick reference when working wit
 - Core models: `/Users/rob/repos/agora_at_delve_hack/agora_at/core/models.py`
 - AT Protocol adapter: `/Users/rob/repos/agora_at_delve_hack/agora_at/adapters/atproto_adapter.py`
 - Agora adapter: `/Users/rob/repos/agora_at_delve_hack/agora_at/adapters/agora_adapter.py`
+
+## Newly Developed Components
+
+### 1. DID Generator (`did_generator.py`)
+- Purpose: Generates cryptographic keys and DID documents for AT Protocol agents
+- Features:
+  - Creates secure ECDSA key pairs (P-256 curve)
+  - Generates properly formatted DID documents
+  - Produces deployment guides and configuration files
+  - Creates agent configuration JSON files
+
+### 2. Enhanced Protocol Bridge (`agora_at/core/bridge.py`)
+- Purpose: Connects Agora Protocol with AT Protocol
+- Features:
+  - Bidirectional message translation
+  - Protocol negotiation and management
+  - Session management for AT Protocol
+  - Event-based callback system
+  - Configuration persistence
+
+### 3. Enhanced AT Protocol Adapter (`agora_at/adapters/atproto_adapter.py`)
+- Purpose: Handles interactions with the AT Protocol network
+- Features:
+  - Authentication and session management
+  - Post creation and retrieval
+  - Feed and profile operations
+  - Error handling and logging
+  - Protocol translation
+
+### 4. Enhanced Agora Protocol Adapter (`agora_at/adapters/agora_adapter.py`)
+- Purpose: Manages communication with Agora Protocol agents
+- Features:
+  - Protocol negotiation and storage
+  - Message formatting and transmission
+  - Content processing operations
+  - Protocol statistics and optimization
+
+### 5. Example Setup (`examples/example_setup.py`)
+- Purpose: Demonstrates how to use the integration components
+- Features:
+  - Agent configuration loading
+  - Protocol bridge setup
+  - Protocol negotiation
+  - Post creation and feed processing
+
+## Next Steps
+
+### 1. Server Setup
+- Set up VPS on Dreamhost (already in progress)
+- Get stable IP address for DNS configuration
+- Configure Apache web server
+- Set up SSH access for deployment
+
+### 2. Domain and Identity Configuration
+- Create DNS A records for subdomains:
+  - `alice.cred.at` → VPS IP address
+  - `delve.cred.at` → VPS IP address
+- Run DID generator to create agent identities
+- Deploy DID documents to web server
+- Set up SSL certificates using Let's Encrypt
+
+### 3. Agent Implementation
+- Implement Ollama-based local agent (Alice)
+- Set up SSH tunnel for local-to-server communication
+- Configure vLLM endpoints for remote agents
+- Implement the protocol bridge on the server
+
+### 4. Protocol Testing
+- Test basic communication between agents
+- Test protocol negotiation
+- Validate AT Protocol integration
+- Measure efficiency improvements
+
+### 5. Advanced Features
+- Implement feed generation capabilities
+- Add content moderation features
+- Develop specialized protocol negotiation
+- Create user interface for interaction
+
+### Resources
+- Current development log: `/Users/rob/repos/agora_at_delve_hack/docs/development_log.md`
+- AT Protocol documentation: https://atproto.com/docs
+- Bluesky documentation: https://bsky.social/about/api
+- Agora Protocol documentation: https://agora-protocol.org
